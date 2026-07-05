@@ -19,8 +19,8 @@ import {
   Twitter,
 } from 'lucide-react';
 
-const IMG_1 = 'public/images/ChatGPT Image Jul 5, 2026, 05_44_29 PM.png';
-const IMG_2 = 'public/images/ChatGPT Image Jul 5, 2026, 06_06_14 PM.png';
+const IMG_1 = '/images/image1.png';
+const IMG_2 = '/images/image2.png';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
