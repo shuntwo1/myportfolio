@@ -19,8 +19,8 @@ import {
   Twitter,
 } from 'lucide-react';
 
-const IMG_1 = '/images/image1.png';
-const IMG_2 = '/images/image2.png';
+const IMG_1 = '/ramonito-portfolio/images/image1.png';
+const IMG_2 = '/ramonito-portfolio/images/image2.png';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
