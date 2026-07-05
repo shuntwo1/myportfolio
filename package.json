@@ -2,7 +2,7 @@
   "name": "vite-react-typescript-starter",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://github.com/shuntwo1/ramonito-portfolio.git",
+  "homepage": "https://github.com/shuntwo1/myportfolio.git",
   "type": "module",
   "scripts": {
     "dev": "vite",
