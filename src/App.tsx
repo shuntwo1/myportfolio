@@ -19,8 +19,8 @@ import {
   Twitter,
 } from 'lucide-react';
 
-const IMG_1 = '/ramonito-portfolio/images/image1.png';
-const IMG_2 = '/ramonito-portfolio/images/image2.png';
+const IMG_1 = '/myportfolio/images/image1.png';
+const IMG_2 = '/myportfolio/images/image2.png';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -164,8 +164,12 @@ function App() {
                   View My Work
                   <ArrowUpRight className="w-4 h-4" />
                 </a>
-                <a href="#about" className="btn-secondary">
-                  About Me
+                <a
+                  href={`${import.meta.env.BASE_URL}resume.pdf`}
+                  download="Ramonito-Mahilum-Jr-Resume.pdf"
+                  className="btn-secondary"
+                >
+                  Resume/CV
                 </a>
               </div>
 
@@ -222,8 +226,8 @@ function App() {
                     <Code2 className="w-4 h-4 text-gold-400" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-white">Full Stack Developer</p>
-                    <p className="text-xs text-zinc-400">Vue.js · Laravel · WordPress</p>
+                    <p className="text-xs font-semibold text-white">WordPress Developer</p>
+                    <p className="text-xs text-zinc-400">Vue.js · Laravel</p>
                   </div>
                 </div>
               </div>
