@@ -466,13 +466,13 @@ function App() {
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  { title: 'Jimenez Dental Clinic', category: 'Web Application', img: '/images/dentas.jpg', imgFit: 'object-top' },
-                  { title: 'E-Learning Platform',   category: 'Mobile App',       img: '/images/elearning.png', imgFit: 'object-center' },
-                  { title: 'Halo Fitness',           category: 'Web Application', img: '/images/haloooo.png', imgFit: 'object-top' },
-                  { title: 'SeaLearn',               category: 'Mobile App',       img: '/images/image.png', imgFit: 'object-top' },
-                  { title: 'Task Manager App',       category: 'Mobile App',       img: '/images/todo.png', imgFit: 'object-center' },
-                ].map((project) => (
+                                  {[
+                    { title: 'Jimenez Dental Clinic', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dentas.jpg`, imgFit: 'object-top' },
+                    { title: 'E-Learning Platform',   category: 'Mobile App',       img: `${import.meta.env.BASE_URL}images/elearning.png`, imgFit: 'object-center' },
+                    { title: 'Halo Fitness',           category: 'Web Application', img: `${import.meta.env.BASE_URL}images/haloooo.png`, imgFit: 'object-top' },
+                    { title: 'SeaLearn',               category: 'Mobile App',       img: `${import.meta.env.BASE_URL}images/image.png`, imgFit: 'object-top' },
+                    { title: 'Task Manager App',       category: 'Mobile App',       img: `${import.meta.env.BASE_URL}images/todo.png`, imgFit: 'object-center' },
+                  ].map((project) => (
                   <div
                     key={project.title}
                     className="group rounded-2xl overflow-hidden border border-zinc-800 hover:border-gold-500/30 bg-zinc-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-gold-500/5"
