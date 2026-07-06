@@ -8,7 +8,6 @@ import {
   Mail,
   MapPin,
   Phone,
-  ExternalLink,
   ArrowUpRight,
   Calendar,
   Award,
@@ -256,8 +255,7 @@ function App() {
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { value: '4+', label: 'Years Learning' },
-                  { value: '10+', label: 'Projects' },
-                  { value: '5+', label: 'Technologies' },
+                  { value: '5', label: 'Projects' },
                   { value: '1', label: 'Published Thesis' },
                 ].map((stat) => (
                   <div
@@ -450,53 +448,70 @@ function App() {
         </div>
       </section>
 
-      {/* ===== PROJECTS SECTION ===== */}
-      <section id="projects" className="section-padding bg-black">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gold-500 mb-4 justify-center">
-              <span className="w-6 h-px bg-gold-500" />
-              Portfolio
-              <span className="w-6 h-px bg-gold-500" />
-            </span>
-            <h2 className="heading-2 text-white">
-              My <span className="gold-text">Projects</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { title: 'Project One', category: 'Web Application', gradient: 'from-gold-900/50 to-zinc-900' },
-              { title: 'Project Two', category: 'WordPress Site', gradient: 'from-zinc-800 to-zinc-900' },
-              { title: 'Project Three', category: 'E-commerce', gradient: 'from-gold-900/30 to-zinc-900' },
-            ].map((project) => (
-              <div
-                key={project.title}
-                className="group rounded-2xl overflow-hidden border border-zinc-800 hover:border-zinc-600 bg-zinc-900 transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className={`aspect-video bg-gradient-to-br ${project.gradient} relative flex items-center justify-center`}>
-                  <Code2 className="w-10 h-10 text-zinc-700 group-hover:text-zinc-500 transition-colors duration-300" />
-                  <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <ExternalLink className="w-4 h-4 text-gold-400" />
-                  </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-xs font-medium text-gold-500 mb-2">{project.category}</p>
-                  <h3 className="font-semibold text-white text-lg">{project.title}</h3>
-                  <p className="text-sm text-zinc-500 mt-2">Project details coming soon...</p>
-                </div>
+                {/* ===== PROJECTS SECTION ===== */}
+          <section id="projects" className="section-padding bg-black">
+            <div className="max-w-7xl mx-auto">
+              <div className="text-center mb-16">
+                <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gold-500 mb-4 justify-center">
+                  <span className="w-6 h-px bg-gold-500" />
+                  Portfolio
+                  <span className="w-6 h-px bg-gold-500" />
+                </span>
+                <h2 className="heading-2 text-white">
+                  My <span className="gold-text">Projects</span>
+                </h2>
+                <p className="text-zinc-500 mt-4 max-w-xl mx-auto">
+                  A selection of real-world applications I've designed and developed.
+                </p>
               </div>
-            ))}
-          </div>
 
-          <div className="text-center mt-12">
-            <a href="#contact" className="btn-secondary">
-              Want to see more?
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
-          </div>
-        </div>
-      </section>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  { title: 'Jimenez Dental Clinic', category: 'Web Application', img: '/images/dentas.jpg', imgFit: 'object-top' },
+                  { title: 'E-Learning Platform',   category: 'Mobile App',       img: '/images/elearning.png', imgFit: 'object-center' },
+                  { title: 'Halo Fitness',           category: 'Web Application', img: '/images/haloooo.png', imgFit: 'object-top' },
+                  { title: 'SeaLearn',               category: 'Mobile App',       img: '/images/image.png', imgFit: 'object-top' },
+                  { title: 'Task Manager App',       category: 'Mobile App',       img: '/images/todo.png', imgFit: 'object-center' },
+                ].map((project) => (
+                  <div
+                    key={project.title}
+                    className="group rounded-2xl overflow-hidden border border-zinc-800 hover:border-gold-500/30 bg-zinc-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-gold-500/5"
+                  >
+                    {/* Screenshot */}
+                    <div className="overflow-hidden bg-zinc-800" style={{ aspectRatio: '16/9' }}>
+                      <img
+                        src={project.img}
+                        alt={project.title}
+                        className={`w-full h-full object-cover ${project.imgFit} transition-transform duration-500 group-hover:scale-105`}
+                        onError={(e) => {
+                          // Fallback if image doesn't load - shows a placeholder
+                          const target = e.currentTarget;
+                          target.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3Ccircle cx='8.5' cy='8.5' r='1.5'/%3E%3Cpath d='M21 15l-5-5L5 21'/%3E%3C/svg%3E`;
+                          target.className = 'w-full h-full object-contain p-8 bg-zinc-800';
+                          target.alt = `${project.title} (image not found)`;
+                        }}
+                      />
+                    </div>
+
+                    {/* Info */}
+                    <div className="px-5 py-4">
+                      <p className="text-xs font-semibold text-gold-500 uppercase tracking-wider mb-1">
+                        {project.category}
+                      </p>
+                      <h3 className="font-semibold text-white text-base">{project.title}</h3>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="text-center mt-12">
+                <a href="#contact" className="btn-secondary">
+                  Interested in working together?
+                  <ArrowUpRight className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+          </section>
 
       {/* ===== CONTACT SECTION ===== */}
       <section id="contact" className="section-padding bg-zinc-950">
