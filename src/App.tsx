@@ -16,7 +16,7 @@ import {
   ChevronDown,
   Github,
   Linkedin,
-  Twitter,
+  Facebook,
 } from 'lucide-react';
 
 const IMG_1 = '/myportfolio/images/image1.png';
@@ -173,18 +173,20 @@ function App() {
                 </a>
               </div>
 
-              {/* Social Links */}
+              {/* Social Links - MOVED INSIDE LEFT COLUMN */}
               <div className="flex items-center gap-5 opacity-0 animate-fade-in animate-delay-500">
                 <span className="text-xs uppercase tracking-widest text-zinc-600">Follow</span>
                 <div className="w-8 h-px bg-zinc-800" />
                 {[
-                  { icon: Github, label: 'GitHub' },
-                  { icon: Linkedin, label: 'LinkedIn' },
-                  { icon: Twitter, label: 'Twitter' },
-                ].map(({ icon: Icon, label }) => (
+                  { icon: Github, label: 'GitHub', url: 'https://github.com/shuntwo1' },
+                  { icon: Linkedin, label: 'LinkedIn', url: 'https://linkedin.com/in/your-linkedin-here' },
+                  { icon: Facebook, label: 'Facebook', url: 'https://facebook.com/your-facebook-here' },
+                ].map(({ icon: Icon, label, url }) => (
                   <a
                     key={label}
-                    href="#"
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={label}
                     className="w-9 h-9 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-500 hover:text-gold-400 hover:border-gold-500/50 transition-all duration-300"
                   >
