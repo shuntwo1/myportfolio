@@ -470,9 +470,8 @@ function App() {
                     { title: 'Jimenez Dental Clinic', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dentas.png`, imgFit: 'object-center' },
                     { title: 'Jimenez Dental Clinic', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dentas1.png`, imgFit: 'object-center' },
                     { title: 'Jimenez Dental Clinic', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dentas2.png`, imgFit: 'object-top' },
+                    { title: 'Transcycle',           category: 'Web Application', img: `${import.meta.env.BASE_URL}images/transcycle.png`, imgFit: 'object-top' },
                     { title: 'E-Learning Platform',   category: 'Mobile App',       img: `${import.meta.env.BASE_URL}images/elearning.png`, imgFit: 'object-center' },
-                    { title: 'Halo Fitness',           category: 'Web Application', img: `${import.meta.env.BASE_URL}images/haloooo.png`, imgFit: 'object-top' },
-                    { title: 'SeaLearn',               category: 'Mobile App',       img: `${import.meta.env.BASE_URL}images/sealearnsite.png`, imgFit: 'object-top' },
                     { title: 'Task Manager App',       category: 'Mobile App',       img: `${import.meta.env.BASE_URL}images/todo.png`, imgFit: 'object-center' },
                   ].map((project) => (
                   <div
