@@ -178,8 +178,8 @@ function App() {
                 <div className="w-8 h-px bg-zinc-800" />
                 {[
                   { icon: Github, label: 'GitHub', url: 'https://github.com/shuntwo1' },
-                  { icon: Linkedin, label: 'LinkedIn', url: 'https://linkedin.com/in/your-linkedin-here' },
-                  { icon: Facebook, label: 'Facebook', url: 'https://facebook.com/your-facebook-here' },
+                  { icon: Linkedin, label: 'LinkedIn', url: 'https://www.linkedin.com/in/ramonito-mahilum-610463420/' },
+                  { icon: Facebook, label: 'Facebook', url: 'https://www.facebook.com/ramonitomahilumjr' },
                 ].map(({ icon: Icon, label, url }) => (
                   <a
                     key={label}
@@ -467,10 +467,12 @@ function App() {
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                   {[
-                    { title: 'Jimenez Dental Clinic', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dentas.jpg`, imgFit: 'object-top' },
+                    { title: 'Jimenez Dental Clinic', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dentas.png`, imgFit: 'object-center' },
+                    { title: 'Jimenez Dental Clinic', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dentas1.png`, imgFit: 'object-center' },
+                    { title: 'Jimenez Dental Clinic', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dentas2.png`, imgFit: 'object-top' },
                     { title: 'E-Learning Platform',   category: 'Mobile App',       img: `${import.meta.env.BASE_URL}images/elearning.png`, imgFit: 'object-center' },
                     { title: 'Halo Fitness',           category: 'Web Application', img: `${import.meta.env.BASE_URL}images/haloooo.png`, imgFit: 'object-top' },
-                    { title: 'SeaLearn',               category: 'Mobile App',       img: `${import.meta.env.BASE_URL}images/image.png`, imgFit: 'object-top' },
+                    { title: 'SeaLearn',               category: 'Mobile App',       img: `${import.meta.env.BASE_URL}images/sealearnsite.png`, imgFit: 'object-top' },
                     { title: 'Task Manager App',       category: 'Mobile App',       img: `${import.meta.env.BASE_URL}images/todo.png`, imgFit: 'object-center' },
                   ].map((project) => (
                   <div
@@ -534,9 +536,9 @@ function App() {
 
               <div className="space-y-5">
                 {[
-                  { icon: Mail, label: 'Email', value: 'hello@example.com' },
-                  { icon: Phone, label: 'Phone', value: '+63 XXX XXX XXXX' },
-                  { icon: MapPin, label: 'Location', value: 'Philippines' },
+                  { icon: Mail, label: 'Email', value: 'mahilum.r213@gmail.com' },
+                  { icon: Phone, label: 'Phone', value: '+63 951 844 4077' },
+                  { icon: MapPin, label: 'Location', value: 'Panabo City, Davao del Norte, Philippines' },
                 ].map(({ icon: Icon, label, value }) => (
                   <div key={label} className="flex items-center gap-4">
                     <div className="w-11 h-11 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center flex-shrink-0">
@@ -553,57 +555,68 @@ function App() {
 
             {/* Form */}
             <div className="dark-card p-8">
-              <form className="space-y-5">
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-colors text-sm"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-colors text-sm"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                </div>
+              <form
+              action="https://formspree.io/f/mnjkrodb"
+              method="POST"
+              className="space-y-5"
+            >
+              <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">
-                    Subject
+                    Name
                   </label>
                   <input
                     type="text"
+                    name="name"
+                    required
                     className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-colors text-sm"
-                    placeholder="Project inquiry"
+                    placeholder="Your name"
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">
-                    Message
+                    Email
                   </label>
-                  <textarea
-                    rows={4}
-                    className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-colors text-sm resize-none"
-                    placeholder="Tell me about your project..."
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-colors text-sm"
+                    placeholder="your@email.com"
                   />
                 </div>
-                <button
-                  type="submit"
-                  className="w-full py-3.5 bg-gold-500 text-black font-semibold rounded-xl hover:bg-gold-400 transition-colors duration-300 flex items-center justify-center gap-2 text-sm"
-                >
-                  Send Message
-                  <ArrowUpRight className="w-4 h-4" />
-                </button>
-              </form>
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">
+                  Subject
+                </label>
+                <input
+                  type="text"
+                  name="subject"
+                  className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-colors text-sm"
+                  placeholder="Project inquiry"
+                />
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  required
+                  rows={4}
+                  className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-colors text-sm resize-none"
+                  placeholder="Tell me about your project..."
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full py-3.5 bg-gold-500 text-black font-semibold rounded-xl hover:bg-gold-400 transition-colors duration-300 flex items-center justify-center gap-2 text-sm"
+              >
+                Send Message
+                <ArrowUpRight className="w-4 h-4" />
+              </button>
+            </form>
             </div>
           </div>
         </div>
@@ -620,9 +633,9 @@ function App() {
               © {new Date().getFullYear()} Ramonito Mahilum Jr. All rights reserved.
             </p>
             <div className="flex items-center gap-5 text-sm text-zinc-600">
-              <a href="#" className="hover:text-gold-400 transition-colors">GitHub</a>
-              <a href="#" className="hover:text-gold-400 transition-colors">LinkedIn</a>
-              <a href="#" className="hover:text-gold-400 transition-colors">Twitter</a>
+              <a href="https://github.com/shuntwo1" target="_blank" rel="noopener noreferrer" className="hover:text-gold-400 transition-colors">GitHub</a>
+              <a href="https://www.linkedin.com/in/ramonito-mahilum-610463420/" target="_blank" rel="noopener noreferrer" className="hover:text-gold-400 transition-colors">LinkedIn</a>
+              <a href="https://www.facebook.com/ramonitomahilumjr" target="_blank" rel="noopener noreferrer" className="hover:text-gold-400 transition-colors">Facebook</a>
             </div>
           </div>
         </div>
