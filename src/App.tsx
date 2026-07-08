@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   Menu,
   X,
   GraduationCap,
   Code2,
-  Briefcase,
   Mail,
   MapPin,
   Phone,
@@ -17,7 +16,28 @@ import {
   Linkedin,
   Facebook,
 } from 'lucide-react';
+function useInView(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
 
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return { ref, isInView };
+}
 const IMG_1 = '/myportfolio/images/image1.png';
 const IMG_2 = '/myportfolio/images/image2.png';
 
@@ -43,7 +63,9 @@ function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
+  const skillsReveal = useInView();
+  const statsReveal = useInView();
+  const projectsReveal = useInView();
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
@@ -227,7 +249,7 @@ function App() {
                     <Code2 className="w-4 h-4 text-gold-400" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-white">WordPress Developer</p>
+                    <p className="text-xs font-semibold text-white">Web Developer</p>
                     <p className="text-xs text-zinc-400">Vue.js · Laravel</p>
                   </div>
                 </div>
@@ -251,16 +273,18 @@ function App() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Stats Card Side */}
-            <div className="relative">
+            <div ref={statsReveal.ref} className="relative">
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { value: '4+', label: 'Years Learning' },
                   { value: '5', label: 'Projects' },
-                  { value: '1', label: 'Published Thesis' },
-                ].map((stat) => (
+                ].map((stat, index) => (
                   <div
                     key={stat.label}
-                    className="dark-card p-6 hover:border-zinc-700 transition-colors duration-300"
+                    className={`dark-card p-6 hover:border-zinc-700 transition-all duration-700 ease-out ${
+                      statsReveal.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                    }`}
+                    style={{ transitionDelay: `${index * 120}ms` }}
                   >
                     <p className="text-3xl font-bold font-display gold-text mb-1">{stat.value}</p>
                     <p className="text-sm text-zinc-500">{stat.label}</p>
@@ -411,42 +435,55 @@ function App() {
       </section>
 
       {/* ===== SKILLS SECTION ===== */}
-      <section id="skills" className="section-padding bg-zinc-950">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gold-500 mb-4 justify-center">
-              <span className="w-6 h-px bg-gold-500" />
-              What I Do
-              <span className="w-6 h-px bg-gold-500" />
-            </span>
-            <h2 className="heading-2 text-white">
-              My <span className="gold-text">Skills</span>
-            </h2>
-          </div>
+              <section id="skills" className="section-padding bg-zinc-950">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gold-500 mb-4 justify-center">
+                <span className="w-6 h-px bg-gold-500" />
+                What I Do
+                <span className="w-6 h-px bg-gold-500" />
+              </span>
+              <h2 className="heading-2 text-white">
+                My <span className="gold-text">Skills</span>
+              </h2>
+            </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {[
-              { icon: Code2, title: 'Frontend Development', desc: 'Vue.js, React, TypeScript, Tailwind CSS', color: 'text-gold-400', bg: 'bg-gold-500/10 border-gold-500/20' },
-              { icon: Briefcase, title: 'Backend Development', desc: 'Laravel, Node.js, PHP, REST APIs', color: 'text-zinc-300', bg: 'bg-zinc-800 border-zinc-700' },
-              { icon: Code2, title: 'Database Management', desc: 'MySQL, PostgreSQL, MongoDB', color: 'text-zinc-300', bg: 'bg-zinc-800 border-zinc-700' },
-              { icon: Code2, title: 'WordPress Development', desc: 'Custom Themes, Plugins, Performance', color: 'text-gold-400', bg: 'bg-gold-500/10 border-gold-500/20' },
-              { icon: Code2, title: 'SEO Optimization', desc: 'Technical SEO, Analytics, Core Web Vitals', color: 'text-zinc-300', bg: 'bg-zinc-800 border-zinc-700' },
-              { icon: Code2, title: 'API Integration', desc: 'RESTful APIs, Third-party Services', color: 'text-gold-400', bg: 'bg-gold-500/10 border-gold-500/20' },
-            ].map(({ icon: Icon, title, desc, color, bg }) => (
-              <div
-                key={title}
-                className={`group p-6 rounded-2xl border ${bg} hover:border-gold-500/40 transition-all duration-300`}
-              >
-                <div className="w-10 h-10 rounded-xl bg-black/30 flex items-center justify-center mb-4">
-                  <Icon className={`w-5 h-5 ${color}`} />
-                </div>
-                <h3 className="font-semibold text-white mb-2">{title}</h3>
-                <p className="text-sm text-zinc-500">{desc}</p>
+            <div ref={skillsReveal.ref} className="grid md:grid-cols-2 gap-x-12 gap-y-8 max-w-4xl mx-auto">
+                {[
+                  { title: 'WordPress (Divi/Elementor)', percent: 70 },
+                  { title: 'PHP / Laravel', percent: 60 },
+                  { title: 'MySQL', percent: 70 },
+                  { title: 'UI/UX Design Basics', percent: 60 },
+                  { title: 'SEO', percent: 80 },
+                  { title: 'Vue.js / Quasar', percent: 60 },
+                  { title: 'Problem Solving', percent: 80 },
+                  { title: 'Image Data Analysis', percent: 60 },
+                ].map(({ title, percent }, index) => (
+                  <div
+                    key={title}
+                    className={`transition-all duration-700 ease-out ${
+                      skillsReveal.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+                    }`}
+                    style={{ transitionDelay: `${index * 80}ms` }}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-semibold text-white text-sm">{title}</h3>
+                      <span className="text-gold-400 text-sm font-medium">{percent}%</span>
+                    </div>
+                    <div className="w-full h-2 bg-zinc-800 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-gradient-to-r from-gold-600 to-gold-400 rounded-full transition-all duration-1000 ease-out"
+                        style={{
+                          width: skillsReveal.isInView ? `${percent}%` : '0%',
+                          transitionDelay: `${300 + index * 80}ms`,
+                        }}
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
           </div>
-        </div>
-      </section>
+        </section>
 
                 {/* ===== PROJECTS SECTION ===== */}
           <section id="projects" className="section-padding bg-black">
@@ -465,45 +502,44 @@ function App() {
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                  {[
-                    { title: 'Jimenez Dental Clinic', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dentas.png`, imgFit: 'object-center' },
-                    { title: 'Jimenez Dental Clinic', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dentas1.png`, imgFit: 'object-center' },
-                    { title: 'Jimenez Dental Clinic', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dentas2.png`, imgFit: 'object-top' },
-                    { title: 'Transcycle',           category: 'Web Application', img: `${import.meta.env.BASE_URL}images/transcycle.png`, imgFit: 'object-top' },
-                    { title: 'E-Learning Platform',   category: 'Mobile App',       img: `${import.meta.env.BASE_URL}images/elearning.png`, imgFit: 'object-center' },
-                    { title: 'Task Manager App',       category: 'Mobile App',       img: `${import.meta.env.BASE_URL}images/todo.png`, imgFit: 'object-center' },
-                  ].map((project) => (
-                  <div
-                    key={project.title}
-                    className="group rounded-2xl overflow-hidden border border-zinc-800 hover:border-gold-500/30 bg-zinc-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-gold-500/5"
-                  >
-                    {/* Screenshot */}
-                    <div className="overflow-hidden bg-zinc-800" style={{ aspectRatio: '16/9' }}>
-                      <img
-                        src={project.img}
-                        alt={project.title}
-                        className={`w-full h-full object-cover ${project.imgFit} transition-transform duration-500 group-hover:scale-105`}
-                        onError={(e) => {
-                          // Fallback if image doesn't load - shows a placeholder
-                          const target = e.currentTarget;
-                          target.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3Ccircle cx='8.5' cy='8.5' r='1.5'/%3E%3Cpath d='M21 15l-5-5L5 21'/%3E%3C/svg%3E`;
-                          target.className = 'w-full h-full object-contain p-8 bg-zinc-800';
-                          target.alt = `${project.title} (image not found)`;
-                        }}
-                      />
-                    </div>
-
-                    {/* Info */}
-                    <div className="px-5 py-4">
-                      <p className="text-xs font-semibold text-gold-500 uppercase tracking-wider mb-1">
-                        {project.category}
-                      </p>
-                      <h3 className="font-semibold text-white text-base">{project.title}</h3>
-                    </div>
+              <div ref={projectsReveal.ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {[
+                      { title: 'Jimenez Dental Clinic', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dentas.png`, imgFit: 'object-center' },
+                      { title: 'Jimenez Dental Clinic', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dentas1.png`, imgFit: 'object-center' },
+                      { title: 'Jimenez Dental Clinic', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dentas2.png`, imgFit: 'object-top' },
+                      { title: 'Transcycle', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/transcycle.png`, imgFit: 'object-top' },
+                      { title: 'E-Learning Platform', category: 'Mobile App', img: `${import.meta.env.BASE_URL}images/elearning.png`, imgFit: 'object-center' },
+                      { title: 'Task Manager App', category: 'Mobile App', img: `${import.meta.env.BASE_URL}images/todo.png`, imgFit: 'object-center' },
+                    ].map((project, index) => (
+                      <div
+                        key={project.title}
+                        className={`group rounded-2xl overflow-hidden border border-zinc-800 hover:border-gold-500/30 bg-zinc-900 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-gold-500/5 ${
+                          projectsReveal.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                        }`}
+                        style={{ transitionDelay: `${index * 100}ms`, transitionDuration: projectsReveal.isInView ? '700ms' : '300ms' }}
+                      >
+                        <div className="overflow-hidden bg-zinc-800" style={{ aspectRatio: '16/9' }}>
+                          <img
+                            src={project.img}
+                            alt={project.title}
+                            className={`w-full h-full object-cover ${project.imgFit} transition-transform duration-500 group-hover:scale-105`}
+                            onError={(e) => {
+                              const target = e.currentTarget;
+                              target.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Crect x='3' y='3' width='18' height='18' rx='2'/%3E%3Ccircle cx='8.5' cy='8.5' r='1.5'/%3E%3Cpath d='M21 15l-5-5L5 21'/%3E%3C/svg%3E`;
+                              target.className = 'w-full h-full object-contain p-8 bg-zinc-800';
+                              target.alt = `${project.title} (image not found)`;
+                            }}
+                          />
+                        </div>
+                        <div className="px-5 py-4">
+                          <p className="text-xs font-semibold text-gold-500 uppercase tracking-wider mb-1">
+                            {project.category}
+                          </p>
+                          <h3 className="font-semibold text-white text-base">{project.title}</h3>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
 
               <div className="text-center mt-12">
                 <a href="#contact" className="btn-secondary">
