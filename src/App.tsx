@@ -504,10 +504,10 @@ function App() {
 
               <div ref={projectsReveal.ref} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {[
-                      { title: 'Jimenez Dental Clinic', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dentas.png`, imgFit: 'object-center' },
-                      { title: 'Jimenez Dental Clinic', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dentas1.png`, imgFit: 'object-center' },
-                      { title: 'Jimenez Dental Clinic', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dentas2.png`, imgFit: 'object-top' },
-                      { title: 'Transcycle', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/transcycle.png`, imgFit: 'object-top' },
+                      { title: 'Transcycle', category: 'Website', img: `${import.meta.env.BASE_URL}images/transcycle.png`, imgFit: 'object-top' },
+                      { title: 'Dentatrack', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dental.png`, imgFit: 'object-center' },
+                      { title: 'Dentatrack', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dental1.png`, imgFit: 'object-center' },
+                      { title: 'Dentatrack', category: 'Web Application', img: `${import.meta.env.BASE_URL}images/dental2.png`, imgFit: 'object-top' },
                       { title: 'E-Learning Platform', category: 'Mobile App', img: `${import.meta.env.BASE_URL}images/elearning.png`, imgFit: 'object-center' },
                       { title: 'Task Manager App', category: 'Mobile App', img: `${import.meta.env.BASE_URL}images/todo.png`, imgFit: 'object-center' },
                     ].map((project, index) => (
