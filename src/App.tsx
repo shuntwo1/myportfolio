@@ -66,6 +66,8 @@ function App() {
   const skillsReveal = useInView();
   const statsReveal = useInView();
   const projectsReveal = useInView();
+  const educationReveal = useInView();
+  const contactReveal = useInView();
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
@@ -349,89 +351,99 @@ function App() {
             </h2>
           </div>
 
-          <div className="space-y-6 max-w-4xl mx-auto">
-            {/* College */}
-            <div className="relative dark-card p-8 hover:border-zinc-700 transition-all duration-300 group overflow-hidden">
-              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-gold-400 to-gold-600 rounded-l-2xl" />
-              <div className="flex flex-col md:flex-row md:items-start gap-6">
-                <div className="flex-shrink-0">
-                  <div className="w-14 h-14 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center group-hover:bg-gold-500/20 transition-colors duration-300">
-                    <GraduationCap className="w-7 h-7 text-gold-400" />
+          <div ref={educationReveal.ref} className="space-y-6 max-w-4xl mx-auto">
+              {/* College */}
+              <div
+                className={`relative dark-card p-8 hover:border-zinc-700 transition-all duration-700 ease-out group overflow-hidden ${
+                  educationReveal.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: '0ms' }}
+              >
+                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-gold-400 to-gold-600 rounded-l-2xl" />
+                <div className="flex flex-col md:flex-row md:items-start gap-6">
+                  <div className="flex-shrink-0">
+                    <div className="w-14 h-14 rounded-xl bg-gold-500/10 border border-gold-500/20 flex items-center justify-center group-hover:bg-gold-500/20 transition-colors duration-300">
+                      <GraduationCap className="w-7 h-7 text-gold-400" />
+                    </div>
+                  </div>
+                  <div className="flex-grow">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4">
+                      <div>
+                        <h3 className="text-lg font-semibold text-white">
+                          Bachelor of Science in Information Technology
+                        </h3>
+                        <p className="text-gold-400 font-medium text-sm mt-0.5">
+                          Davao Del Norte State College
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-zinc-500 bg-zinc-800 px-3 py-1.5 rounded-full w-fit shrink-0">
+                        <Calendar className="w-3.5 h-3.5" />
+                        <span>Jun 2022 – Jul 2026</span>
+                      </div>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-2.5">
+                        <Award className="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0" />
+                        <p className="text-zinc-400 text-sm">
+                          <span className="text-zinc-200 font-medium">Thesis: </span>
+                          "Diagnostic Analytics For Recovery And Post-Operative Assessment Using the
+                          Dentatrack Intelligent Monitoring System"
+                        </p>
+                      </div>
+                      <div className="flex items-start gap-2.5">
+                        <BookOpen className="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0" />
+                        <p className="text-zinc-400 text-sm">
+                          <span className="text-zinc-200 font-medium">Relevant Coursework: </span>
+                          Programming, Web Development, Database Management
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="flex-grow">
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4">
-                    <div>
-                      <h3 className="text-lg font-semibold text-white">
-                        Bachelor of Science in Information Technology
-                      </h3>
-                      <p className="text-gold-400 font-medium text-sm mt-0.5">
-                        Davao Del Norte State College
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs text-zinc-500 bg-zinc-800 px-3 py-1.5 rounded-full w-fit shrink-0">
-                      <Calendar className="w-3.5 h-3.5" />
-                      <span>Jun 2022 – Jul 2026</span>
+              </div>
+
+              {/* Senior High */}
+              <div
+                className={`relative dark-card p-8 hover:border-zinc-700 transition-all duration-700 ease-out group overflow-hidden ${
+                  educationReveal.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: '150ms' }}
+              >
+                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-zinc-500 to-zinc-700 rounded-l-2xl" />
+                <div className="flex flex-col md:flex-row md:items-start gap-6">
+                  <div className="flex-shrink-0">
+                    <div className="w-14 h-14 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center group-hover:border-zinc-600 transition-colors duration-300">
+                      <GraduationCap className="w-7 h-7 text-zinc-400" />
                     </div>
                   </div>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-2.5">
-                      <Award className="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0" />
-                      <p className="text-zinc-400 text-sm">
-                        <span className="text-zinc-200 font-medium">Thesis: </span>
-                        "Diagnostic Analytics For Recovery And Post-Operative Assessment Using the
-                        Dentatrack Intelligent Monitoring System"
-                      </p>
+                  <div className="flex-grow">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4">
+                      <div>
+                        <h3 className="text-lg font-semibold text-white">
+                          Information and Communication Technology
+                        </h3>
+                        <p className="text-zinc-400 font-medium text-sm mt-0.5">
+                          Northlink Technological College
+                        </p>
+                        <p className="text-xs text-zinc-600 mt-0.5">Senior High School</p>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-zinc-500 bg-zinc-800 px-3 py-1.5 rounded-full w-fit shrink-0">
+                        <Calendar className="w-3.5 h-3.5" />
+                        <span>Jun 2019 – Aug 2020</span>
+                      </div>
                     </div>
                     <div className="flex items-start gap-2.5">
-                      <BookOpen className="w-4 h-4 text-gold-500 mt-0.5 flex-shrink-0" />
+                      <BookOpen className="w-4 h-4 text-zinc-500 mt-0.5 flex-shrink-0" />
                       <p className="text-zinc-400 text-sm">
                         <span className="text-zinc-200 font-medium">Relevant Coursework: </span>
-                        Programming, Web Development, Database Management
+                        Computer Systems Servicing, Networking
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Senior High */}
-            <div className="relative dark-card p-8 hover:border-zinc-700 transition-all duration-300 group overflow-hidden">
-              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-zinc-500 to-zinc-700 rounded-l-2xl" />
-              <div className="flex flex-col md:flex-row md:items-start gap-6">
-                <div className="flex-shrink-0">
-                  <div className="w-14 h-14 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center group-hover:border-zinc-600 transition-colors duration-300">
-                    <GraduationCap className="w-7 h-7 text-zinc-400" />
-                  </div>
-                </div>
-                <div className="flex-grow">
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4">
-                    <div>
-                      <h3 className="text-lg font-semibold text-white">
-                        Information and Communication Technology
-                      </h3>
-                      <p className="text-zinc-400 font-medium text-sm mt-0.5">
-                        Northlink Technological College
-                      </p>
-                      <p className="text-xs text-zinc-600 mt-0.5">Senior High School</p>
-                    </div>
-                    <div className="flex items-center gap-2 text-xs text-zinc-500 bg-zinc-800 px-3 py-1.5 rounded-full w-fit shrink-0">
-                      <Calendar className="w-3.5 h-3.5" />
-                      <span>Jun 2019 – Aug 2020</span>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-2.5">
-                    <BookOpen className="w-4 h-4 text-zinc-500 mt-0.5 flex-shrink-0" />
-                    <p className="text-zinc-400 text-sm">
-                      <span className="text-zinc-200 font-medium">Relevant Coursework: </span>
-                      Computer Systems Servicing, Networking
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+             </div>
       </section>
 
       {/* ===== SKILLS SECTION ===== */}
@@ -553,9 +565,13 @@ function App() {
       {/* ===== CONTACT SECTION ===== */}
       <section id="contact" className="section-padding bg-zinc-950">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+          <div ref={contactReveal.ref} className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             {/* Info */}
-            <div>
+            <div
+              className={`transition-all duration-700 ease-out ${
+                contactReveal.isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+              }`}
+            >
               <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-gold-500 mb-4">
                 <span className="w-6 h-px bg-gold-500" />
                 Get In Touch
@@ -574,8 +590,14 @@ function App() {
                   { icon: Mail, label: 'Email', value: 'mahilum.r213@gmail.com' },
                   { icon: Phone, label: 'Phone', value: '+63 951 844 4077' },
                   { icon: MapPin, label: 'Location', value: 'Panabo City, Davao del Norte, Philippines' },
-                ].map(({ icon: Icon, label, value }) => (
-                  <div key={label} className="flex items-center gap-4">
+                ].map(({ icon: Icon, label, value }, index) => (
+                  <div
+                    key={label}
+                    className={`flex items-center gap-4 transition-all duration-700 ease-out ${
+                      contactReveal.isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                    }`}
+                    style={{ transitionDelay: `${200 + index * 100}ms` }}
+                  >
                     <div className="w-11 h-11 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center flex-shrink-0">
                       <Icon className="w-5 h-5 text-gold-400" />
                     </div>
@@ -589,69 +611,74 @@ function App() {
             </div>
 
             {/* Form */}
-            <div className="dark-card p-8">
-              <form
-              action="https://formspree.io/f/mnjkrodb"
-              method="POST"
-              className="space-y-5"
+            <div
+              className={`dark-card p-8 transition-all duration-700 ease-out ${
+                contactReveal.isInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+              }`}
+              style={{ transitionDelay: '150ms' }}
             >
-              <div className="grid sm:grid-cols-2 gap-5">
+              <form
+                action="https://formspree.io/f/mnjkrodb"
+                method="POST"
+                className="space-y-5"
+              >
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-colors text-sm"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-colors text-sm"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                </div>
                 <div>
                   <label className="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">
-                    Name
+                    Subject
                   </label>
                   <input
                     type="text"
-                    name="name"
-                    required
+                    name="subject"
                     className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-colors text-sm"
-                    placeholder="Your name"
+                    placeholder="Project inquiry"
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">
-                    Email
+                    Message
                   </label>
-                  <input
-                    type="email"
-                    name="email"
+                  <textarea
+                    name="message"
                     required
-                    className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-colors text-sm"
-                    placeholder="your@email.com"
+                    rows={4}
+                    className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-colors text-sm resize-none"
+                    placeholder="Tell me about your project..."
                   />
                 </div>
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  name="subject"
-                  className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-colors text-sm"
-                  placeholder="Project inquiry"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-zinc-500 uppercase tracking-wider mb-2">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  required
-                  rows={4}
-                  className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-colors text-sm resize-none"
-                  placeholder="Tell me about your project..."
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full py-3.5 bg-gold-500 text-black font-semibold rounded-xl hover:bg-gold-400 transition-colors duration-300 flex items-center justify-center gap-2 text-sm"
-              >
-                Send Message
-                <ArrowUpRight className="w-4 h-4" />
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  className="w-full py-3.5 bg-gold-500 text-black font-semibold rounded-xl hover:bg-gold-400 transition-colors duration-300 flex items-center justify-center gap-2 text-sm"
+                >
+                  Send Message
+                  <ArrowUpRight className="w-4 h-4" />
+                </button>
+              </form>
             </div>
           </div>
         </div>
